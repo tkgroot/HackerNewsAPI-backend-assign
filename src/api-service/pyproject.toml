@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "api-service"
+version = "0.1.0"
+description = ""
+authors = ["Tobias Kuppens Groot <tkuppensgroo@uos.de>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+[tool.poetry.dev-dependencies]
+pytest = "^4.0"
+
+[tool.black]
+line-length=88
+include='\.pyi?$'
+exclude='''
+/(
+    \.git
+  | \.gitignore
+  | \.env
+  | \.venv
+  | docs
+)/
+'''
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
