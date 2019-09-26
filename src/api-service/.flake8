@@ -13,7 +13,7 @@ exclude =
     # Documentation doesn't need to be tracked
     docs,
 
-# extend-ignore =
+extend-ignore = D204
 # per-file-ignores =
 
 verbose = 2
