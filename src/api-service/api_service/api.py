@@ -18,8 +18,15 @@ class TwentyFiveStories(Resource):
     """25 Stories API Endpoint."""
     def get(self):
         """
-        Get-Method.
-        :return:
+        GET-Method.
+
+        requests the HackerNews API ``/newstories.json`` to retrieve the latest 500
+        story ids, using 25 ids to request the story's content from HackerNews.
+        The stories are then filtered the title extracted and merged together in one
+        title string. This is is then passed into ``top_ten_words()`` to gather to top
+        ten frequent used words.
+
+        :return: {dict} - 10 frequent used words
         """
         titles = ""  # string representation of all titles
         # counts number of stories where the title can be extracted
