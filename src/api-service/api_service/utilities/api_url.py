@@ -4,12 +4,12 @@ API_V = 0
 
 
 def newstories_url():
-    """Generates the GETTER URL from HackerNews API to query new stories."""
+    """Generate the GETTER URL from HackerNews API to query new stories."""
     return f"{BASE_URL}/v{API_V}/newstories.json"
 
 
 def story_url_for(idx=None):
-    """Generates the GETTER URL from HackerNews API for stories."""
+    """Generate the GETTER URL from HackerNews API for stories."""
     if idx is None:
         return None
 

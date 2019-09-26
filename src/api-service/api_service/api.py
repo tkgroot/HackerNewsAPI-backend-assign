@@ -61,6 +61,7 @@ class SevenDaysStories(Resource):
     def get(self):
         """
         Get-Method.
+
         :return:
         """
         return True
@@ -71,6 +72,7 @@ class TenKKarmaStories(Resource):
     def get(self):
         """
         GET-Method.
+
         :return:
         """
         return True
