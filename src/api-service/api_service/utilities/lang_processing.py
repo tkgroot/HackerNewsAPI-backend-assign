@@ -6,7 +6,7 @@ from nltk.tag import pos_tag
 from nltk.corpus import stopwords
 from nltk import FreqDist
 
-special_chars = "'´`–``’"
+special_chars = "'´”`–“``’"
 punctuation = string.punctuation + special_chars
 
 
@@ -37,7 +37,9 @@ def clean_data(sentence):
 
         token = lemmatizer.lemmatize(token, pos)
 
+        # TODO: regex for "'s"
         if token not in punctuation and token.lower() not in stop_words:
+            # TODO: regex for "'title" to remove prefix '
             cleaned_tokens.append(token)
 
     return cleaned_tokens
