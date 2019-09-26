@@ -1,29 +1,21 @@
 """Resource for API Service."""
 import requests
+import numpy as np
 from flask_restful import Resource
 from requests_futures.sessions import FuturesSession
 
-from api_service.utilities.api_url import newstories_url, find_user_by, story_url_for
+from api_service.utilities.api_url import newstories_url, story_url_for
+from api_service.utilities.response_hooks import (
+    find_story_title_hook,
+    find_story_title_user_karma_hook,
+)
 from api_service.utilities.lang_processing import top_ten_words
 
-KARMA_LIMIT = 10000  # contains a constant for the karma limit
+# TODO: use .env for variable declaration instead
+MAX_STORIES = 600  # maximum number of stories
 
 
-def res_hook(resp, *args, **kwargs):
-    """Response hook."""
-    data = resp.json()
-    username = data["by"] if data["by"] else None
-    user = requests.get(url=find_user_by(username=username)).json()
-    karma = user["karma"] if user["karma"] else 0
-
-    if karma < KARMA_LIMIT:
-        resp.data = {"title": ""}
-    else:
-        print("story_id", data["id"], "user_id", data["by"])
-        resp.data = resp.json()["title"]
-
-
-class TenKKarmaStories(Resource):
+class KarmaStories(Resource):
     """Users 10.000 Karma Points Story API Endpoint."""
 
     def get(self):
@@ -33,18 +25,61 @@ class TenKKarmaStories(Resource):
         :return: {dict} - 10 most frequent used words
         """
         titles = ""  # string representation of all titles
+        additional_stories = 0  # counts the additional stories found during API query
 
-        new_stories_top500 = requests.get(url=newstories_url()).json()
-        stories = new_stories_top500
+        stories = requests.get(url=newstories_url()).json()  # [21076026]
+        last_story_id = stories[-1:][0]
 
-        # Create the asynchronous session
+        # --* Create asynchronous sessions *--
+        # others - handles the amount stories which are not contained in the
+        # 'newstories' HN API query
+        # sessions - handles the stories which are contained in the
+        # 'newstories' HN API query
+        others = FuturesSession()
         session = FuturesSession()
 
+        # prevents limit to be a negative number
+        limit = (MAX_STORIES - len(stories)) if (MAX_STORIES - len(stories)) > 0 else 0
+
+        # run until limit of stories is reached
+        while additional_stories < limit:
+            stories_left = limit - additional_stories
+
+            # array should start with the previous to last story and be of the size of
+            # the amount of stories left to reach the given limit
+            # previous to last story available => (last_story_id - 1)
+            story_id_array = np.arange(
+                last_story_id - 1, (last_story_id - 1) - stories_left, -1
+            )
+
+            result = [
+                others.get(
+                    url=story_url_for(story_id),
+                    hooks={"response": find_story_title_hook},
+                )
+                for story_id in story_id_array
+            ]
+
+            # add new found stories
+            for story in result:
+                story = story.result()
+                if story.data is not None:
+                    # title of the story or None if user doesn't have enough Karma
+                    titles += f" {story.data}"
+                    # while-loop-anker - increase by one since one story is found
+                    additional_stories += 1
+
+            last_story_id = story_id_array[-1:][0]
+
         res_stories = [
-            session.get(url=story_url_for(story_id), hooks={"response": res_hook})
+            session.get(
+                url=story_url_for(story_id),
+                hooks={"response": find_story_title_user_karma_hook},
+            )
             for story_id in stories
         ]
 
+        # add new found stories
         for story in res_stories:
             story = story.result()
             titles += f" {story.data}"
