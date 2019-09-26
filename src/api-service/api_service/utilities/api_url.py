@@ -14,3 +14,11 @@ def story_url_for(idx=None):
         return None
 
     return f"{BASE_URL}/v{API_V}/item/{idx}.json"
+
+
+def find_user_by(username=None):
+    """Generate the GETTER URL from HN API to query the user data for given user."""
+    if username is None:
+        return None
+
+    return f"{BASE_URL}/v{API_V}/user/{username}.json"
