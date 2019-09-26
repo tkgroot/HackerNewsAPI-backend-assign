@@ -1,0 +1,35 @@
+[flake8]
+# Set the max line length to 88, which matches black code formatter
+# https://black.readthedocs.io/en/stable/
+max-line-length = 88
+
+exclude =
+    # No reason to check git´s directory
+    .git,
+    # No value in checking cache directories
+    __pycache__,
+    # Virtualenvs
+    .venv,
+    # Documentation doesn't need to be tracked
+    docs,
+
+# extend-ignore =
+# per-file-ignores =
+
+verbose = 2
+quiet = 0
+format = pylint
+max-complexity = 15
+# Count the total number of errors flake8 finds during inspection
+count = True
+# Report all errors, even if it is on the same line as a # NOQA comment
+# This flag will be set when running flake8 tests in CI
+disable-noqa = False
+# Print the source code generating the error/warning in question
+show-source = True
+statistics = True
+
+# Doctests
+doctests = True
+# include-in-doctest = dir/subdir/file.py
+# exclude-in-doctest = dir/subdir/file.py
