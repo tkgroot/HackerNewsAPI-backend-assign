@@ -6,6 +6,9 @@ from nltk.tag import pos_tag
 from nltk.corpus import stopwords
 from nltk import FreqDist
 
+special_chars = "´`-"
+punctuation = string.punctuation + special_chars
+
 
 def clean_data(sentence):
     """
@@ -34,7 +37,7 @@ def clean_data(sentence):
 
         token = lemmatizer.lemmatize(token, pos)
 
-        if token not in string.punctuation and token.lower() not in stop_words:
+        if token not in punctuation and token.lower() not in stop_words:
             cleaned_tokens.append(token)
 
     return cleaned_tokens
