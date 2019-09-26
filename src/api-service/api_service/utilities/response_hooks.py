@@ -16,7 +16,6 @@ def find_story_title_user_karma_hook(resp, *args, **kwargs):
     :param kwargs: {dict}
     """
     data = resp.json()
-    pprint.pprint(data)
 
     if "deleted" in data:
         resp.data = None
