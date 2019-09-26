@@ -5,6 +5,7 @@ from flask_restful import Resource, Api
 from requests_futures.sessions import FuturesSession
 
 from api_service.utilities.api_url import newstories_url, story_url_for
+from api_service.utilities.lang_processing import top_ten_words
 
 app = Flask(__name__)
 api = Api(app)
@@ -52,7 +53,7 @@ class TwentyFiveStories(Resource):
                 titles += f" {content['title']}"
                 story_counter += 1
 
-        return titles
+        return top_ten_words(titles)
 
 
 class SevenDaysStories(Resource):
