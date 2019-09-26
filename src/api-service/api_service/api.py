@@ -12,12 +12,13 @@ app = Flask(__name__)
 api = Api(app)
 
 # helpers
-KARMA_LIMIT = 10000     # contains a constant for the karma limit
+KARMA_LIMIT = 10000  # contains a constant for the karma limit
 
 
 # Resources
 class SevenDaysStories(Resource):
     """7 Days API Endpoint."""
+
     def get(self):
         """
         Get-Method.
@@ -29,6 +30,7 @@ class SevenDaysStories(Resource):
 
 class TenKKarmaStories(Resource):
     """Users 10.000 Karma Points Story API Endpoint."""
+
     def get(self):
         """
         GET-Method.
@@ -55,7 +57,8 @@ class TenKKarmaStories(Resource):
 
         res_stories = [
             session.get(url=story_url_for(story_id), hooks={"response": res_hook})
-            for story_id in stories]
+            for story_id in stories
+        ]
 
         for story in res_stories:
             story = story.result()

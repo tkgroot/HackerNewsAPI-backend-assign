@@ -10,6 +10,7 @@ MAX_STORIES = 25  # const variable contains story limit
 
 class TwentyFiveStories(Resource):
     """25 Stories API Endpoint."""
+
     def get(self):
         """
         GET-Method.
