@@ -4,26 +4,13 @@ from flask import Flask
 from flask_restful import Resource, Api
 from requests_futures.sessions import FuturesSession
 
+from api_service.utilities.api_url import newstories_url, story_url_for
+
 app = Flask(__name__)
 api = Api(app)
 
 # helpers
 MAX_STORIES = 25
-BASE_URL = "https://hacker-news.firebaseio.com/"
-API_V = 0
-
-
-def newstories_url():
-    """Generates the GETTER URL from HackerNews API to query new stories."""
-    return f"{BASE_URL}/v{API_V}/newstories.json"
-
-
-def story_url_for(idx=None):
-    """Generates the GETTER URL from HackerNews API for stories."""
-    if idx is None:
-        return None
-
-    return f"{BASE_URL}/v{API_V}/item/{idx}.json"
 
 
 # Resources
