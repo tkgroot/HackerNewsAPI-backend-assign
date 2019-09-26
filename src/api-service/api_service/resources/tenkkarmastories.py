@@ -6,7 +6,7 @@ from requests_futures.sessions import FuturesSession
 
 from api_service.utilities.api_url import newstories_url, story_url_for
 from api_service.utilities.response_hooks import (
-    find_story_title_hook,
+    find_story_title_for_karma_hook,
     find_story_title_user_karma_hook,
 )
 from api_service.utilities.lang_processing import top_ten_words
@@ -55,7 +55,7 @@ class KarmaStories(Resource):
             result = [
                 others.get(
                     url=story_url_for(story_id),
-                    hooks={"response": find_story_title_hook},
+                    hooks={"response": find_story_title_for_karma_hook()},
                 )
                 for story_id in story_id_array
             ]

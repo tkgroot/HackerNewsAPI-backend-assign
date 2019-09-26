@@ -33,7 +33,7 @@ def find_story_title_user_karma_hook(resp, *args, **kwargs):
             resp.data = resp.json()["title"]
 
 
-def find_story_title_hook(resp, *args, **kwargs):
+def find_story_title_for_karma_hook(resp, *args, **kwargs):
     """
     Validate the response data.
 
