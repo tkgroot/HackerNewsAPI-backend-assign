@@ -38,12 +38,14 @@ class TwentyFiveStories(Resource):
         session = FuturesSession()
 
         res_stories = [session.get(story_url_for(idx=story_id)) for story_id in stories]
+
         for story in res_stories:
             content = story.result().json()
 
             # Validates the content to be existent and verify that the title key exists
             # Deleted stories are flagged with {deleted:True} and do not contain a
             # title key
+            # TODO: use response_hook
             if content is not None and "title" in content:
                 titles += f" {content['title']}"
                 story_counter += 1
