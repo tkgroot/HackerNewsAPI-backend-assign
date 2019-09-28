@@ -55,18 +55,6 @@ def find_story_time_boundary(
         )
 
 
-def recurse(item):
-    item = requests.get(story_url_for(item["id"])).json()
-    if item["id"] % 10 == 0:
-        print(item["id"])
-    if "deleted" in item and item["deleted"]:
-        print(item)
-        return item
-    else:
-        item["id"] -= 1
-        recurse(item)
-
-
 # Resources
 class SevenDaysStories(Resource):
     """7 Days API Endpoint."""
