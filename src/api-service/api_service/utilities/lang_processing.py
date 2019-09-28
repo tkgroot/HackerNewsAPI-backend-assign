@@ -6,7 +6,7 @@ from nltk.tag import pos_tag
 from nltk.corpus import stopwords
 from nltk import FreqDist
 
-special_chars = "'´”`–“``’"
+special_chars = "'´”`–“``’‘"
 punctuation = string.punctuation + special_chars
 
 
