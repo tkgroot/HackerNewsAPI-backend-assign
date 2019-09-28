@@ -1,6 +1,5 @@
 """Response Hooks Utilities."""
 import requests
-import pprint
 from api_service.utilities.api_url import find_user_by
 
 # TODO: use .env for variable declaration instead
@@ -31,7 +30,6 @@ def find_story_title_user_karma_hook(resp, *args, **kwargs):
         if karma < KARMA_LIMIT:
             resp.data = ""
         else:
-            print("story_id", data["id"], "user_id", data["by"])
             resp.data = resp.json()["title"]
 
 
@@ -41,6 +39,10 @@ def find_story_title_for_karma_hook(resp, *args, **kwargs):
 
     Set response data to the data of the response iff the response data contains the
     attribute ``type: story``, thus the data returned by the query is a story.
+
+    :param resp: {Response} - response object from ``session.get()``
+    :param args: {tuple}
+    :param kwargs: {dict}
     """
     resp.data = resp.json()
 
@@ -52,16 +54,17 @@ def find_story_title_for_karma_hook(resp, *args, **kwargs):
 
 def get_title_hook(resp, *args, **kwargs):
     """
+    Validate the response object and set title as the response attribute.
 
-    :param resp:
-    :param args:
-    :param kwargs:
-    :return:
+    :param resp: {Response} - response object from ``session.get()`` function
+    :param args: {tuple}
+    :param kwargs: {dict}
     """
     resp.data = None  # initialize data attribute for response object resp
     data = resp.json()  # retrieve response json from response object
 
-    # There might be items with an id but no content FTW!
+    # there might be items with an id but no content FTW!
+    # eliminate items which have been deleted, since they don't contain a title
     if data is None or "deleted" in data:
         resp.data = None
     else:
@@ -69,6 +72,5 @@ def get_title_hook(resp, *args, **kwargs):
         #  maybe if one just want to get_titles_hook for only {type: story} only
         #  kwargs["only"] = ("story")
         if data["type"] in ALLOWED_STORY_TYPES:
-            # double check if item actually contains a title field
-            # print(resp.data["title"])
+            # check if item actually contains a title field
             resp.data = data["title"] if "title" in data else None
