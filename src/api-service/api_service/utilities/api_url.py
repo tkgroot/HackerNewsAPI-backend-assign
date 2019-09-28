@@ -1,5 +1,5 @@
 """HackerNews API - URL transformations."""
-BASE_URL = "https://hacker-news.firebaseio.com/"
+BASE_URL = "https://hacker-news.firebaseio.com"
 API_V = 0
 
 
