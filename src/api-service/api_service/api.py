@@ -4,7 +4,7 @@ from flask_restful import Resource, Api
 
 from api_service.utilities.api_url import story_url_for
 from api_service.resources.twentyfivestories import TwentyFiveStories
-from api_service.resources.tenkkarmastories import KarmaStories
+from api_service.resources.karmastories import KarmaStories
 
 app = Flask(__name__)
 api = Api(app)
