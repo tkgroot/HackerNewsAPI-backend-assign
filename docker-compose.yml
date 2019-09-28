@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  api:
+    container_name: api
+    build:
+      context: "./src/api-service"
+      dockerfile: "Dockerfile"
+    volumes:
+      - "./src/api-service/api_service:/api-service/api_service"
+    expose:
+      - 5000
+    ports:
+      - "5000:5000"
