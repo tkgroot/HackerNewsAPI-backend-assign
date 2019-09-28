@@ -18,6 +18,7 @@ Dockerfile
 .editorconfig
 .vscode/
 .python-version
+.DS_Store
 
 # Generated Files and Directories
 docs/
