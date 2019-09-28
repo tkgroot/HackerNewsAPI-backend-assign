@@ -1,0 +1,24 @@
+# Files and Folders to be ignored by Dockerfile
+# Aviod to build sensitive data into a build
+
+.env
+
+# Dockerfiles
+Dockerfile
+.dockerignore
+
+# Git
+.gitignore
+.gitmodules
+.git/
+
+# Git Submodules
+
+# config and other files
+.editorconfig
+.vscode/
+.python-version
+
+# Generated Files and Directories
+docs/
+.venv/
