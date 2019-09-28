@@ -11,11 +11,6 @@ BASE_URL = os.getenv("BASE_URL", "https://hacker-news.firebaseio.com")  # URL fr
 API_VERSION = os.getenv("API_VERSION", "v0")
 
 
-# --* FLASK Settings *--
-FLASK_APP = os.getenv("FLASK_APP", "api.py")
-FLASK_ENV = os.getenv("FLASK_ENV", "development")
-FLASK_DEBUG = os.getenv("FLASK_DEBUG", None)
-
 # --* API Service Settings *--
 KARMA_LIMIT = int(os.getenv("KARMA_LIMIT", 10000))
 MAX_STORIES_KARMA_API = int(os.getenv("MAX_STORIES_KARMA_API", 600))
