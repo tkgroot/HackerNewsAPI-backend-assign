@@ -6,8 +6,9 @@ from nltk.tag import pos_tag
 from nltk.corpus import stopwords
 from nltk import FreqDist
 
-special_chars = "'´”`–“``’‘"
-punctuation = string.punctuation + special_chars
+from api_service.settings import SPECIAL_CHARS
+
+punctuation = string.punctuation + SPECIAL_CHARS
 
 
 def clean_data(sentence):

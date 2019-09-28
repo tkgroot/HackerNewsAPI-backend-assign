@@ -1,11 +1,10 @@
 """HackerNews API - URL transformations."""
-BASE_URL = "https://hacker-news.firebaseio.com"
-API_V = 0
+from api_service.settings import BASE_URL, API_VERSION
 
 
 def newstories_url():
     """Generate the GETTER URL from HackerNews API to query new stories."""
-    return f"{BASE_URL}/v{API_V}/newstories.json"
+    return f"{BASE_URL}/{API_VERSION}/newstories.json"
 
 
 def story_url_for(idx=None):
@@ -13,7 +12,7 @@ def story_url_for(idx=None):
     if idx is None:
         return None
 
-    return f"{BASE_URL}/v{API_V}/item/{idx}.json"
+    return f"{BASE_URL}/{API_VERSION}/item/{idx}.json"
 
 
 def find_user_by(username=None):
@@ -21,9 +20,9 @@ def find_user_by(username=None):
     if username is None:
         return None
 
-    return f"{BASE_URL}/v{API_V}/user/{username}.json"
+    return f"{BASE_URL}/{API_VERSION}/user/{username}.json"
 
 
 def maxitem_url():
     """Generate the GETTER URL from HN API to query the maxitem."""
-    return f"{BASE_URL}/v{API_V}/maxitem.json"
+    return f"{BASE_URL}/{API_VERSION}/maxitem.json"

@@ -10,9 +10,7 @@ from api_service.utilities.response_hooks import (
     find_story_title_user_karma_hook,
 )
 from api_service.utilities.lang_processing import top_ten_words
-
-# TODO: use .env for variable declaration instead
-MAX_STORIES = 600  # maximum number of stories
+from api_service.settings import MAX_STORIES_KARMA_API as MAX_STORIES
 
 
 class KarmaStories(Resource):

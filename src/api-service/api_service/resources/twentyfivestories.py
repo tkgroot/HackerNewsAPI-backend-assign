@@ -5,7 +5,7 @@ from requests_futures.sessions import FuturesSession
 from api_service.utilities.lang_processing import top_ten_words
 from api_service.utilities.api_url import story_url_for, newstories_url
 
-MAX_STORIES = 25  # const variable contains story limit
+from api_service.settings import MAX_STORIES_API as MAX_STORIES
 
 
 class TwentyFiveStories(Resource):

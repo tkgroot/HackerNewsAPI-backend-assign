@@ -1,11 +1,7 @@
 """Response Hooks Utilities."""
 import requests
 from api_service.utilities.api_url import find_user_by
-
-# TODO: use .env for variable declaration instead
-KARMA_LIMIT = 1000  # contains a constant for the karma limit
-# contains the type of stories which titles are allowed to be processed
-ALLOWED_STORY_TYPES = "story"
+from api_service.settings import KARMA_LIMIT, ALLOWED_STORY_TYPES
 
 
 def find_story_title_user_karma_hook(resp, *args, **kwargs):
