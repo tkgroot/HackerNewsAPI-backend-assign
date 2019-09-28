@@ -37,6 +37,8 @@ class TwentyFiveStories(Resource):
         # previous query.
         session = FuturesSession()
 
+        # TODO: use get_title_hook with additional kwargs parameter to limit
+        #  the use of ALLOWED_STORY_TYPES
         res_stories = [session.get(story_url_for(idx=story_id)) for story_id in stories]
 
         for story in res_stories:
@@ -45,7 +47,8 @@ class TwentyFiveStories(Resource):
             # Validates the content to be existent and verify that the title key exists
             # Deleted stories are flagged with {deleted:True} and do not contain a
             # title key
-            # TODO: use response_hook
+            # TODO: use a response_hook instead
+            # TODO: handle deleted:True differently
             if content is not None and "title" in content:
                 titles += f" {content['title']}"
                 story_counter += 1

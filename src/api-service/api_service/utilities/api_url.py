@@ -1,5 +1,5 @@
 """HackerNews API - URL transformations."""
-BASE_URL = "https://hacker-news.firebaseio.com/"
+BASE_URL = "https://hacker-news.firebaseio.com"
 API_V = 0
 
 
@@ -22,3 +22,8 @@ def find_user_by(username=None):
         return None
 
     return f"{BASE_URL}/v{API_V}/user/{username}.json"
+
+
+def maxitem_url():
+    """Generate the GETTER URL from HN API to query the maxitem."""
+    return f"{BASE_URL}/v{API_V}/maxitem.json"
