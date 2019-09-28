@@ -1,7 +1,7 @@
 """Response Hooks Utilities."""
 import requests
 from api_service.utilities.api_url import find_user_by
-from api_service.settings import KARMA_LIMIT, ALLOWED_STORY_TYPES
+from settings import KARMA_LIMIT, ALLOWED_STORY_TYPES
 
 
 def find_story_title_user_karma_hook(resp, *args, **kwargs):

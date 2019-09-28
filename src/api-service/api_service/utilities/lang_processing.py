@@ -6,7 +6,7 @@ from nltk.tag import pos_tag
 from nltk.corpus import stopwords
 from nltk import FreqDist
 
-from api_service.settings import SPECIAL_CHARS
+from settings import SPECIAL_CHARS
 
 punctuation = string.punctuation + SPECIAL_CHARS
 

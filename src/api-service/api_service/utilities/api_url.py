@@ -1,5 +1,5 @@
 """HackerNews API - URL transformations."""
-from api_service.settings import BASE_URL, API_VERSION
+from settings import BASE_URL, API_VERSION
 
 
 def newstories_url():
