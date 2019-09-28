@@ -41,7 +41,7 @@ def clean_data(sentence):
         # TODO: regex for "'s"
         if token not in punctuation and token.lower() not in stop_words:
             # TODO: regex for "'title" to remove prefix '
-            cleaned_tokens.append(token)
+            cleaned_tokens.append(token.lower())
 
     return cleaned_tokens
 
