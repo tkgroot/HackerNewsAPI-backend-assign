@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Jekyll v3.8.5" />
+    <title>Coding Assignment</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <main role="main">
+      <div class="container-fluid">
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <!-- Cards -->
+            <div class="card mb-4 shadow-sm">
+              <div class="card-body">
+                <div
+                  class="d-flex justify-content-between align-content-center"
+                >
+                  <h5 class="card-title m-0">25 Stories</h5>
+                  <button id="APIEndpoint1" class="btn btn-sm btn-primary">
+                    Get Data
+                  </button>
+                </div>
+                <div class="d-flex mt-3 jumbotron p-2 mb-0">
+                  <code id="lateststories" class="code"></code>
+                </div>
+              </div>
+            </div>
+            <!-- Cards -->
+            <div class="card mb-4 shadow-sm">
+              <div class="card-body">
+                <div
+                  class="d-flex justify-content-between align-content-center"
+                >
+                  <h5 class="card-title m-0">Last Week</h5>
+                  <button id="APIEndpoint2" class="btn btn-sm btn-primary">
+                    Get Data
+                  </button>
+                </div>
+                <div class="d-flex mt-3 jumbotron p-2 mb-0">
+                  <code id="daysofposts" class="code"></code>
+                </div>
+              </div>
+            </div>
+            <!-- Cards -->
+            <div class="card mb-4 shadow-sm">
+              <div class="card-body">
+                <div
+                  class="d-flex justify-content-between align-content-center"
+                >
+                  <h5 class="card-title m-0">600 Stories 10k Karma</h5>
+                  <button id="APIEndpoint3" class="btn btn-sm btn-primary">
+                    Get Data
+                  </button>
+                </div>
+                <div class="d-flex mt-3 jumbotron p-2 mb-0">
+                  <code id="karmastories" class="code"></code>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart -->
+          <section class="col-8 jumbotron text-center">
+            <canvas id="horizontalBarChart"></canvas>
+          </section>
+        </div>
+      </div>
+    </main>
+    <script src="chart.js"></script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+.btn-primary {
+  background-color: rgb(255, 118, 13) !important;
+  border-color: rgb(255, 118, 13) !important;
+  color: white;
+  text-transform: uppercase;
+}
+
+.btn-primary:hover {
+  background-color: white !important;
+  border-color: rgb(255, 118, 13) !important;
+  color: rgb(255, 118, 13) !important;
+}
+
+.code {
+  min-height: 90px;
+  max-height: 90px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  color: darkorange;
+}
