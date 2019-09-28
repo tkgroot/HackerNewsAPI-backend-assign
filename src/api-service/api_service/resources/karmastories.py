@@ -55,7 +55,7 @@ class KarmaStories(Resource):
             result = [
                 others.get(
                     url=story_url_for(story_id),
-                    hooks={"response": find_story_title_for_karma_hook()},
+                    hooks={"response": find_story_title_for_karma_hook},
                 )
                 for story_id in story_id_array
             ]
