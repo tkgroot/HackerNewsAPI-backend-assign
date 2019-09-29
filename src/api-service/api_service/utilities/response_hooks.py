@@ -62,7 +62,7 @@ def get_title_hook(resp, *args, **kwargs):
 
     # there might be items with an id but no content FTW!
     # eliminate items which have been deleted, since they don't contain a title
-    if data is None or "deleted" in data:
+    if data is None or "deleted" in data and data["deleted"]:
         resp.data = None
     else:
         # TODO: add kwargs handler to overwrite the ALLOWED_STORY_TYPES manually
