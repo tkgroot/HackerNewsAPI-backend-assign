@@ -19,7 +19,8 @@ RUN apt-get update && \
   export PATH=$HOME/.poetry/bin:$PATH && \
   poetry self:update && \
   poetry config settings.virtualenvs.in-project true && \
-  poetry install
+  poetry install && \
+  python -m nltk.downloader stopwords punkt averaged_perceptron_tagger wordnet
 
 COPY . .
 
