@@ -40,9 +40,10 @@ def find_story_title_for_karma_hook(resp, *args, **kwargs):
     :param args: {tuple}
     :param kwargs: {dict}
     """
+    resp.data = None
     resp.data = resp.json()
 
-    if resp.json()["type"] == "story":
+    if resp.data is not None and resp.json()["type"] == "story":
         find_story_title_user_karma_hook(resp=resp)
     else:
         resp.data = None
