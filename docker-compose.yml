@@ -12,3 +12,17 @@ services:
       - 5000
     ports:
       - "5000:5000"
+
+  web:
+    container_name: "nginx"
+    build:
+      context: "./src/html"
+      dockerfile: "Dockerfile"
+    depends_on:
+      - "api"
+    volumes:
+      - "./src/html:/usr/share/nginx/html"
+    expose:
+      - 80
+    ports:
+      - "8080:80"
