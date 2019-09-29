@@ -26,7 +26,7 @@ def find_story_title_user_karma_hook(resp, *args, **kwargs):
         if karma < KARMA_LIMIT:
             resp.data = ""
         else:
-            resp.data = resp.json()["title"]
+            resp.data = data["title"]
 
 
 def find_story_title_for_karma_hook(resp, *args, **kwargs):
