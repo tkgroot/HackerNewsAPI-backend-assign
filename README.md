@@ -19,6 +19,21 @@ The API is reachable under [http://localhost:5000/](http://localhost:5000) and s
 /karma_stories        # task 3
 ```
 
+### Environment variables
+
+The application supports setting of environment variables. The following variables
+can be set:
+
+| name                  | default    | description |
+| --------------------- | ---------- | ----------- |
+| KARMA_LIMIT           | 10000      | karma points of users to be considered in API request |
+| MAX_STORIES_KARMA_API | 600        | amount of stories the API endpoint `/karma_stories` should handle |
+| MAX_STORIES_API       | 25         | amount of stories the API endpoint `/twenty_five_stories` should query. MAX=500 |
+| ALLOWED_STORY_TYPES   | "story"    | which posts should be considered ("story", "job", "poll") |
+| SPECIAL_CHARS         | '´”`–“``’‘ | a list of special chars for language processing |
+
+**_Use with care._**
+
 #### Experimental branch
 
 Checkout git branch `f/web`
